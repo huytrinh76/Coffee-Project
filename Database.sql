@@ -94,5 +94,3 @@ BEGIN
 	SELECT * FROM dbo.Account WHERE UserName=@userName AND PassWord=@passWord
 END
 GO
-
-SELECT * FROM dbo.Account WHERE UserName='' AND PassWord=N'' OR 1=1--'
