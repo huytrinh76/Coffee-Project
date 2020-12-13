@@ -27,6 +27,9 @@ namespace Coffee_Project
 			{
 				Button btn = new Button() {Width=TableDAO.TableWidth, Height=TableDAO.TableHeight };
 				btn.Text = item.Name+Environment.NewLine+item.Status;
+                btn.Click += Btn_Click;
+				btn.Tag = item;
+
 				switch (item.Status)
 				{
 					case "Trống":
@@ -38,10 +41,20 @@ namespace Coffee_Project
 				}
 				flpTable.Controls.Add(btn);
 			}
-		}	
+		}
+
+		void ShowBill(int id)
+        {
+
+        }
 		#endregion
 
 		#region Events
+		private void Btn_Click(object sender, EventArgs e)
+		{
+			int tableID=(sender as Table).ID;
+			ShowBill(tableID);
+		}
 
 		private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
 		{

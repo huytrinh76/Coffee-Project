@@ -137,6 +137,7 @@ VALUES
     )
 
 --Thêm món
+--Khai vị
 INSERT dbo.Food
 (
     name,
@@ -155,6 +156,200 @@ VALUES(N'Nộm bò khô', 1, 70000)
 INSERT dbo.Food(name, idCategory, price)
 VALUES(N'Bánh hỏi heo quay cuốn bánh tráng', 1, 135000)
 
-SELECT *FROM dbo.Bill
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Xà lách trộn dầu dấm', 1, 55000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Khoai tây chiên', 1, 55000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Bánh đúc nóng', 1, 26000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Há cảo tôm cua', 1, 60000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Bánh bao chay', 1, 35000)
+
+--Món chính
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Bún chả kẹp que tre Hà Nội', 2, 70000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Mực một nắng chiên giòn (size S)', 2, 375000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Gỏi cuốn tôm thịt', 2, 25000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Nem cua bể', 2, 90000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Lẩu bông Miền Tây', 2, 420000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chả cá Hà Nội', 2, 140000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Cơm chiên hải sản', 2, 125000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Cơm lam gà nướng', 2, 98000)
+
+--Tráng miệng
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Tào phớ', 3, 22000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè sương sa hạt lựu', 3, 30000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè hoa cau', 3, 26000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè ba màu', 3, 30000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè chuối hấp nước dừa', 3, 26000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè thập cẩm', 3, 30000)
+
+INSERT dbo.Food(name, idCategory, price)
+VALUES(N'Chè hạt sen', 3, 30000)
+
+--thêm bill
+INSERT dbo.Bill
+(
+    DateCheckIn,
+    DateCheckOut,
+    idTable,
+    status
+)
+VALUES
+(   GETDATE(), -- DateCheckIn - date
+    NULL, -- DateCheckOut - date
+    1,         -- idTable - int
+    0          -- status - int
+    )
+
+INSERT dbo.Bill
+(
+    DateCheckIn,
+    DateCheckOut,
+    idTable,
+    status
+)
+VALUES
+(   GETDATE(), -- DateCheckIn - date
+    NULL, -- DateCheckOut - date
+    2,         -- idTable - int
+    0          -- status - int
+    )
+
+INSERT dbo.Bill
+(
+    DateCheckIn,
+    DateCheckOut,
+    idTable,
+    status
+)
+VALUES
+(   GETDATE(), -- DateCheckIn - date
+    GETDATE(), -- DateCheckOut - date
+    2,         -- idTable - int
+    1          -- status - int
+    )
+
+--theem bill in4
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   1, -- idBill - int
+    1, -- idFood - int
+    2  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   1, -- idBill - int
+    1, -- idFood - int
+    2  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   1, -- idBill - int
+    3, -- idFood - int
+    4  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   1, -- idBill - int
+    5, -- idFood - int
+    1  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   2, -- idBill - int
+    1, -- idFood - int
+    2  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   2, -- idBill - int
+    6, -- idFood - int
+    2  -- count - int
+    )
+
+INSERT dbo.BillInfor
+(
+    idBill,
+    idFood,
+    count
+)
+VALUES
+(   3, -- idBill - int
+    5, -- idFood - int
+    2  -- count - int
+    )
 GO
+
+SELECT *FROM dbo.Bill
 SELECT *FROM dbo.BillInfor
+SELECT *FROM dbo.FoodCategory
+SELECT *FROM dbo.Food
+GO 
+SELECT*FROM dbo.TableFood
