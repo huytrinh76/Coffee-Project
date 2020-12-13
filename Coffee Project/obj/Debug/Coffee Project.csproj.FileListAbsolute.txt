@@ -11,3 +11,16 @@ E:\Code\Coffee\Coffee Project\obj\Debug\Coffee_Project.TableManager.resources
 E:\Code\Coffee\Coffee Project\obj\Debug\Coffee_Project.AccountProfile.resources
 E:\Code\Coffee\Coffee Project\obj\Debug\Coffee_Project.Admin.resources
 E:\Code\Coffee\Coffee Project\obj\Debug\Coffee_Project.fLogin.resources
+E:\Code\ProjectCoffee\Coffee Project\bin\Debug\Coffee Project.exe.config
+E:\Code\ProjectCoffee\Coffee Project\bin\Debug\Coffee Project.exe
+E:\Code\ProjectCoffee\Coffee Project\bin\Debug\Coffee Project.pdb
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csprojAssemblyReference.cache
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee_Project.AccountProfile.resources
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee_Project.Admin.resources
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee_Project.fLogin.resources
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee_Project.Properties.Resources.resources
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee_Project.TableManager.resources
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csproj.GenerateResource.cache
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csproj.CoreCompileInputs.cache
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.exe
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.pdb

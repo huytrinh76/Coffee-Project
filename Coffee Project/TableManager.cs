@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Coffee_Project.DAO;
+using Coffee_Project.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +17,31 @@ namespace Coffee_Project
 		public TableManager()
 		{
 			InitializeComponent();
+			LoadTable();
 		}
+		#region Method
+		void LoadTable()
+		{
+			List<Table> tableList=TableDAO.Instance.LoadTableList();
+			foreach(Table item in tableList)
+			{
+				Button btn = new Button() {Width=TableDAO.TableWidth, Height=TableDAO.TableHeight };
+				btn.Text = item.Name+Environment.NewLine+item.Status;
+				switch (item.Status)
+				{
+					case "Trống":
+						btn.BackColor = Color.White;
+						break;
+					default:
+						btn.BackColor = Color.Green;
+							break;
+				}
+				flpTable.Controls.Add(btn);
+			}
+		}	
+		#endregion
+
+		#region Events
 
 		private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -33,5 +59,6 @@ namespace Coffee_Project
 			Admin f = new Admin();
 			f.ShowDialog();
 		}
+		#endregion
 	}
 }

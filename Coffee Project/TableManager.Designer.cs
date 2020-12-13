@@ -61,7 +61,7 @@ namespace Coffee_Project
 			this.panel2.Controls.Add(this.lsvBill);
 			this.panel2.Location = new System.Drawing.Point(409, 89);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(379, 288);
+			this.panel2.Size = new System.Drawing.Size(379, 300);
 			this.panel2.TabIndex = 1;
 			// 
 			// lsvBill
@@ -69,7 +69,7 @@ namespace Coffee_Project
 			this.lsvBill.HideSelection = false;
 			this.lsvBill.Location = new System.Drawing.Point(3, 3);
 			this.lsvBill.Name = "lsvBill";
-			this.lsvBill.Size = new System.Drawing.Size(373, 282);
+			this.lsvBill.Size = new System.Drawing.Size(373, 294);
 			this.lsvBill.TabIndex = 0;
 			this.lsvBill.UseCompatibleStateImageBehavior = false;
 			// 
@@ -80,9 +80,9 @@ namespace Coffee_Project
 			this.panel3.Controls.Add(this.nmDiscount);
 			this.panel3.Controls.Add(this.btnDiscount);
 			this.panel3.Controls.Add(this.btnCheckOut);
-			this.panel3.Location = new System.Drawing.Point(409, 383);
+			this.panel3.Location = new System.Drawing.Point(409, 395);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(379, 55);
+			this.panel3.Size = new System.Drawing.Size(379, 56);
 			this.panel3.TabIndex = 2;
 			// 
 			// cbSwitchTable
@@ -183,10 +183,10 @@ namespace Coffee_Project
 			// 
 			// flpTable
 			// 
-			this.flpTable.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+			this.flpTable.AutoScroll = true;
 			this.flpTable.Location = new System.Drawing.Point(12, 27);
 			this.flpTable.Name = "flpTable";
-			this.flpTable.Size = new System.Drawing.Size(391, 411);
+			this.flpTable.Size = new System.Drawing.Size(391, 424);
 			this.flpTable.TabIndex = 3;
 			// 
 			// adminToolStripMenuItem
@@ -226,7 +226,7 @@ namespace Coffee_Project
             this.thôngTinTàiKhoảnToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(814, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -234,7 +234,7 @@ namespace Coffee_Project
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(814, 463);
 			this.Controls.Add(this.flpTable);
 			this.Controls.Add(this.panel4);
 			this.Controls.Add(this.panel3);
