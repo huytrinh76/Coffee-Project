@@ -18,7 +18,7 @@ namespace Coffee_Project.DTO
 		}
 		public Menu(DataRow row)
 		{
-			this.FoodName = row["Name"].ToString();
+			this.FoodName = row["name"].ToString();
 			this.Count = (int)row["count"];
 			this.Price = (int)row["price"];
 			this.TotalPrice = (int)row["totalPrice"];

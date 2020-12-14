@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Menu=Coffee_Project.DTO.Menu;
 
 namespace Coffee_Project.DAO
 {
@@ -12,11 +13,17 @@ namespace Coffee_Project.DAO
 	{
 		private static MenuDAO instance;
 
-		public static MenuDAO Instance {
-			get { if (instance == null) instance = new MenuDAO();return MenuDAO.instance; } 
-			private set => instance = value; 
+		public static MenuDAO Instance
+		{
+			get { if (instance == null) instance = new MenuDAO(); return MenuDAO.instance; }
+			private set => instance = value;
 		}
+
+
+
 		private MenuDAO() { }
+
+
 		public List<Menu>GetListMenuByTable(int id)
 		{
 			List<Menu> listMenu = new List<Menu>();

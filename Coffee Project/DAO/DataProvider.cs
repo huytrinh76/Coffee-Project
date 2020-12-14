@@ -20,7 +20,7 @@ namespace Coffee_Project.DAO
 
 		private DataProvider() { }
 
-		private string connectionstr = @"Data Source=MURDOCK\SQLEXPRESS;Initial Catalog=Coffee;Integrated Security=True";
+		private string connectionstr = @"Data Source=.\SQLEXPRESS;Initial Catalog=Coffee;Integrated Security=True";
 		public DataTable ExecuteQuery(string query, object[] parameter=null)
 		{
 			DataTable data = new DataTable();

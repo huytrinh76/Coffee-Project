@@ -282,7 +282,7 @@ INSERT dbo.BillInfor
 )
 VALUES
 (   1, -- idBill - int
-    1, -- idFood - int
+    4, -- idFood - int
     2  -- count - int
     )
 
@@ -305,7 +305,7 @@ INSERT dbo.BillInfor
     count
 )
 VALUES
-(   1, -- idBill - int
+(   3, -- idBill - int
     5, -- idFood - int
     1  -- count - int
     )
@@ -342,7 +342,7 @@ INSERT dbo.BillInfor
 )
 VALUES
 (   3, -- idBill - int
-    5, -- idFood - int
+    4, -- idFood - int
     2  -- count - int
     )
 GO
