@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.ListViewItem;
+using Menu = Coffee_Project.DTO.Menu;
 
 namespace Coffee_Project
 {
@@ -45,14 +47,23 @@ namespace Coffee_Project
 
 		void ShowBill(int id)
         {
-
+			lsvBill.Items.Clear();
+			List<Menu> listBillInfor = MenuDAO.Instance.GetListMenuByTable(id);
+			foreach (Menu item in listBillInfor)
+			{
+				ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
+				lsvItem.SubItems.Add(item.Count.ToString());
+				lsvItem.SubItems.Add(item.Price.ToString());
+				lsvItem.SubItems.Add(item.TotalPrice.ToString());
+				lsvBill.Items.Add(lsvItem);
+			}
         }
 		#endregion
 
 		#region Events
 		private void Btn_Click(object sender, EventArgs e)
 		{
-			int tableID=(sender as Table).ID;
+			int tableID=((sender as Button).Tag as Table).ID;
 			ShowBill(tableID);
 		}
 

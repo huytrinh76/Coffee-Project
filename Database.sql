@@ -353,3 +353,9 @@ SELECT *FROM dbo.FoodCategory
 SELECT *FROM dbo.Food
 GO 
 SELECT*FROM dbo.TableFood
+
+SELECT *FROM dbo.Bill WHERE idTable=1 AND status=0
+
+SELECT f.name, bi.count, f.price, f.price*bi.count AS totalPrice
+FROM dbo.BillInfor AS bi, dbo.Bill AS b, dbo.Food AS f
+WHERE bi.idBill=b.id AND bi.idFood=f.id AND b.idTable=1

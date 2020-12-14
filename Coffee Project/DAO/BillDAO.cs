@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Coffee_Project.DTO;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +21,13 @@ namespace Coffee_Project.DAO
 
         public int GetUncheckBillIDByTableID(int id)
         {
-            return DataProvider.Instance.ExecuteScalar("");
+            DataTable data = DataProvider.Instance.ExecuteQuery("SELECT *FROM dbo.Bill WHERE idTable="+id+" AND status=0");
+			if (data.Rows.Count>0)
+			{
+                Bill bill = new Bill(data.Rows[0]);
+                return bill.ID;
+			}
+            return -1;
         }
     }
 }
