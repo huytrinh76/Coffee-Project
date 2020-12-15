@@ -36,6 +36,8 @@ namespace Coffee_Project
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.panel3 = new System.Windows.Forms.Panel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.txbTotalPrice = new System.Windows.Forms.TextBox();
 			this.cbSwitchTable = new System.Windows.Forms.ComboBox();
 			this.btnSwitchTable = new System.Windows.Forms.Button();
 			this.nmDiscount = new System.Windows.Forms.NumericUpDown();
@@ -52,8 +54,6 @@ namespace Coffee_Project
 			this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.txbTotalPrice = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.nmDiscount)).BeginInit();
@@ -119,6 +119,28 @@ namespace Coffee_Project
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(379, 56);
 			this.panel3.TabIndex = 2;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(189, 4);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(85, 21);
+			this.label1.TabIndex = 8;
+			this.label1.Text = "Tổng tiền:";
+			// 
+			// txbTotalPrice
+			// 
+			this.txbTotalPrice.Font = new System.Drawing.Font("Azonix", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txbTotalPrice.ForeColor = System.Drawing.Color.Red;
+			this.txbTotalPrice.Location = new System.Drawing.Point(171, 28);
+			this.txbTotalPrice.Name = "txbTotalPrice";
+			this.txbTotalPrice.ReadOnly = true;
+			this.txbTotalPrice.Size = new System.Drawing.Size(121, 24);
+			this.txbTotalPrice.TabIndex = 7;
+			this.txbTotalPrice.Text = "0";
+			this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
 			// 
 			// cbSwitchTable
 			// 
@@ -215,6 +237,7 @@ namespace Coffee_Project
 			this.cbCategory.Name = "cbCategory";
 			this.cbCategory.Size = new System.Drawing.Size(245, 21);
 			this.cbCategory.TabIndex = 0;
+			this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
 			// 
 			// flpTable
 			// 
@@ -266,28 +289,6 @@ namespace Coffee_Project
 			this.menuStrip1.Size = new System.Drawing.Size(814, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// txbTotalPrice
-			// 
-			this.txbTotalPrice.Font = new System.Drawing.Font("Azonix", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txbTotalPrice.ForeColor = System.Drawing.Color.Red;
-			this.txbTotalPrice.Location = new System.Drawing.Point(171, 28);
-			this.txbTotalPrice.Name = "txbTotalPrice";
-			this.txbTotalPrice.ReadOnly = true;
-			this.txbTotalPrice.Size = new System.Drawing.Size(121, 24);
-			this.txbTotalPrice.TabIndex = 7;
-			this.txbTotalPrice.Text = "0";
-			this.txbTotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(189, 4);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(85, 21);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "Tổng tiền:";
 			// 
 			// TableManager
 			// 

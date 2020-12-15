@@ -13,13 +13,10 @@ namespace Coffee_Project.DAO
 		public static AccountDAO Instance
 		{
 			get { if (instance == null) instance = new AccountDAO(); return instance; }
-			private set { instance = value; }
+			private set  => instance = value; 
 		}
 
-		private AccountDAO()
-		{
-
-		}
+		private AccountDAO(){}
 		public bool Login(string userName, string passWord)
 		{
 			string query = "USP_Login @userName , @passWord";
