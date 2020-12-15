@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.ListViewItem;
 using Menu = Coffee_Project.DTO.Menu;
+using System.Globalization;
+using System.Threading;
 
 namespace Coffee_Project
 {
@@ -49,14 +51,19 @@ namespace Coffee_Project
         {
 			lsvBill.Items.Clear();
 			List<Menu> listBillInfor = MenuDAO.Instance.GetListMenuByTable(id);
+			int totalPrice = 0;
 			foreach (Menu item in listBillInfor)
 			{
 				ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
 				lsvItem.SubItems.Add(item.Count.ToString());
 				lsvItem.SubItems.Add(item.Price.ToString());
 				lsvItem.SubItems.Add(item.TotalPrice.ToString());
+				totalPrice += item.TotalPrice;
 				lsvBill.Items.Add(lsvItem);
 			}
+			CultureInfo cultture = new CultureInfo("vi-VN");
+			//Thread.CurrentThread.CurrentCulture = cultture;
+			txbTotalPrice.Text = totalPrice.ToString("c", cultture);
         }
 		#endregion
 

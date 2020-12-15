@@ -23,3 +23,4 @@ E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csproj.GenerateRes
 E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csproj.CoreCompileInputs.cache
 E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.exe
 E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.pdb
+E:\Code\ProjectCoffee\Coffee Project\obj\Debug\Coffee Project.csprojAssemblyReference.cache
