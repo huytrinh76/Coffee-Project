@@ -84,6 +84,7 @@ namespace Coffee_Project
 		private void Btn_Click(object sender, EventArgs e)
 		{
 			int tableID=((sender as Button).Tag as Table).ID;
+			lsvBill.Tag = (sender as Button).Tag;
 			ShowBill(tableID);
 		}
 
@@ -114,6 +115,23 @@ namespace Coffee_Project
 			Category selected = cb.SelectedItem as Category;
 			id = selected.ID;
 			LoadFoodListByCategoryID(id);
+		}
+		private void btnAddFood_Click(object sender, EventArgs e)
+		{
+			Table table = lsvBill.Tag as Table;
+			int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+			int foodID = (cbFood.SelectedItem as Food).ID;
+			int count = (int)nmFoodCount.Value;
+			if (idBill==-1)
+			{
+				BillDAO.Instance.InsertBill(table.ID);
+				BillInforDAO.Instance.InsertBillInfor(BillDAO.Instance.GetMaxIDBill(), foodID, count);
+			}
+			else
+			{
+				BillInforDAO.Instance.InsertBillInfor(idBill, foodID, count);
+			}
+			ShowBill(table.ID);
 		}
 		#endregion
 	}

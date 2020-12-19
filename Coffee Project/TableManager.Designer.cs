@@ -221,6 +221,7 @@ namespace Coffee_Project
 			this.btnAddFood.TabIndex = 2;
 			this.btnAddFood.Text = "Thêm món";
 			this.btnAddFood.UseVisualStyleBackColor = true;
+			this.btnAddFood.Click += new System.EventHandler(this.btnAddFood_Click);
 			// 
 			// cbFood
 			// 

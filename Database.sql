@@ -362,3 +362,82 @@ WHERE bi.idBill=b.id AND bi.idFood=f.id AND b.idTable=1
 
 SELECT *FROM dbo.Food WHERE idCategory=1
 SELECT*FROM dbo.FoodCategory
+GO
+
+CREATE PROC USP_InsertBill
+@idTable INT
+AS
+BEGIN
+	INSERT dbo.Bill
+	(
+	    DateCheckIn,
+	    DateCheckOut,
+	    idTable,
+	    status
+	)
+	VALUES
+	(   GETDATE(), -- DateCheckIn - date
+	    NULL, -- DateCheckOut - date
+	    @idTable,         -- idTable - int
+	    0          -- status - int
+	    )
+END
+GO
+
+--CREATE PROC USP_InsertBillInfor
+--@idBill INT, @idFood INT, @count INT
+--AS
+--BEGIN
+--	INSERT dbo.BillInfor
+--	(
+--	    idBill,
+--		idFood,
+--		count
+--   )
+--   VALUES
+--	(   @idBill, -- idBill - int
+--		@idFood, -- idFood - int
+--		@count  -- count - int
+--  )
+--END
+--GO
+
+ALTER PROC USP_InsertBillInfor
+@idBill INT, @idFood INT, @count INT
+AS
+BEGIN
+	DECLARE @isExitsBillInfor INT
+	DECLARE @foodCount INT =1
+
+	SELECT @isExitsBillInfor=id, @foodCount=b.count 
+	FROM dbo.BillInfor AS b 
+	WHERE idBill= @idBill AND idFood=@idFood
+
+	IF (@isExitsBillInfor>0)
+	BEGIN
+		DECLARE @newCount INT =@foodCount+@count
+		IF(@newCount>0)
+			UPDATE dbo.BillInfor SET count=@foodCount +@count WHERE idFood=@idFood
+			
+		ELSE
+			DELETE dbo.BillInfor WHERE idBill=@idBill AND idFood=@idFood
+	END
+	ELSE
+		BEGIN
+			INSERT dbo.BillInfor
+	(
+	    idBill,
+		idFood,
+		count
+   )
+   VALUES
+	(   @idBill, -- idBill - int
+		@idFood, -- idFood - int
+		@count  -- count - int
+  )
+		END
+		
+END
+GO
+
+SELECT MAX(id) FROM dbo.Bill
