@@ -30,7 +30,7 @@ namespace Coffee_Project.DAO
 		}
 		public void InsertBillInfor(int idBill, int idFood, int count)
 		{
-			DataProvider.Instance.ExecuteNonQuery("USP_InsertBillInfor @idBill , @idFood , @count", new object[] { idBill, idFood, count });
+			DataProvider.Instance.ExecuteNonQuery("EXEC USP_InsertBillInfor @idBill , @idFood , @count", new object[] { idBill, idFood, count });
 		}
 	}
 }

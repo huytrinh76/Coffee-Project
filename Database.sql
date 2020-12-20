@@ -110,8 +110,7 @@ CREATE PROC USP_GetTableList
 AS SELECT *FROM dbo.TableFood
 GO
 
-UPDATE dbo.TableFood SET status=N'Đã có người' WHERE id=9
-GO
+--UPDATE dbo.TableFood SET status=N'Đã có người' WHERE id=8
 
 --thêm loại món ăn
 INSERT dbo.FoodCategory
@@ -384,25 +383,7 @@ BEGIN
 END
 GO
 
---CREATE PROC USP_InsertBillInfor
---@idBill INT, @idFood INT, @count INT
---AS
---BEGIN
---	INSERT dbo.BillInfor
---	(
---	    idBill,
---		idFood,
---		count
---   )
---   VALUES
---	(   @idBill, -- idBill - int
---		@idFood, -- idFood - int
---		@count  -- count - int
---  )
---END
---GO
-
-ALTER PROC USP_InsertBillInfor
+CREATE PROC USP_InsertBillInfor
 @idBill INT, @idFood INT, @count INT
 AS
 BEGIN
@@ -440,4 +421,34 @@ BEGIN
 END
 GO
 
-SELECT MAX(id) FROM dbo.Bill
+CREATE TRIGGER UTG_UpdateBillInfor
+ON dbo.BillInfor FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @idBill INT
+	SELECT @idBill= idBill FROM Inserted
+	DECLARE @idTable INT
+	SELECT @idTable=idTable FROM dbo.Bill WHERE id=@idBill AND status=0
+	UPDATE dbo.TableFood SET status=N'Có người' WHERE id=@idTable
+END
+GO
+
+DELETE dbo.BillInfor
+DELETE dbo.Bill
+GO
+
+
+CREATE TRIGGER UTG_UpdateBill
+ON dbo.Bill FOR UPDATE 
+AS
+BEGIN
+	DECLARE @idBill INT
+	SELECT @idBill=id FROM Inserted
+	DECLARE @idTable INT
+	SELECT @idTable=idTable FROM dbo.Bill WHERE id=@idBill
+	DECLARE @count INT =0
+	SELECT @count=COUNT(*) FROM dbo.Bill WHERE idTable=@idTable AND status=0
+	IF(@count=0)
+		UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable
+END
+GO
