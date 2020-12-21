@@ -19,6 +19,10 @@ namespace Coffee_Project.DAO
 		public static int TableWidth = 100;
 		public static int TableHeight = 100;
 		private TableDAO() { }
+		public void SwitchTable(int id1, int id2)
+		{
+			DataProvider.Instance.ExecuteQuery("USP_SwitchTable @idTable1 , @idTable2", new object[] {id1, id2 });
+		}
 
 		public List<Table> LoadTableList()
 		{

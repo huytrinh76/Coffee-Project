@@ -372,13 +372,15 @@ BEGIN
 	    DateCheckIn,
 	    DateCheckOut,
 	    idTable,
-	    status
+	    status,
+		discount
 	)
 	VALUES
 	(   GETDATE(), -- DateCheckIn - date
 	    NULL, -- DateCheckOut - date
 	    @idTable,         -- idTable - int
-	    0          -- status - int
+	    0,          -- status - int
+		0
 	    )
 END
 GO
@@ -429,7 +431,16 @@ BEGIN
 	SELECT @idBill= idBill FROM Inserted
 	DECLARE @idTable INT
 	SELECT @idTable=idTable FROM dbo.Bill WHERE id=@idBill AND status=0
-	UPDATE dbo.TableFood SET status=N'Có người' WHERE id=@idTable
+	DECLARE @count INT
+	SELECT @count=COUNT(*) FROM dbo.BillInfor WHERE idBill=@idBill
+	IF(@count>0)
+		BEGIN
+			UPDATE dbo.TableFood SET status=N'Có người' WHERE id=@idTable
+		END
+	ELSE
+		BEGIN
+			UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable
+        END
 END
 GO
 
@@ -452,3 +463,77 @@ BEGIN
 		UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable
 END
 GO
+
+CREATE TABLE dbo.Bill
+ADD discount INT
+
+UPDATE dbo.Bill SET discount=0
+GO
+
+CREATE PROC USP_SwitchTable
+@idTable1 INT, @idTable2 INT
+AS
+BEGIN
+	DECLARE @idFirstBill INT
+	DECLARE @idSecondBill INT
+
+	DECLARE @isFirstTableEmpty INT=1
+	DECLARE @isSecondTableEmpty INT=1
+
+	SELECT @idSecondBill=id FROM dbo.Bill WHERE idTable=@idTable2 AND status=0
+	SELECT @idFirstBill=id FROM dbo.Bill WHERE idTable=@idTable1 AND status=0
+
+	IF(@idFirstBill IS NULL)
+	BEGIN
+		INSERT INTO dbo.Bill
+		(
+		    DateCheckIn,
+		    DateCheckOut,
+		    idTable,
+		    status
+		)
+		VALUES
+		(   GETDATE(), -- DateCheckIn - date
+		    NULL, -- DateCheckOut - date
+		    @idTable1,         -- idTable - int
+		    0       -- status - int
+		    )
+		SELECT @idFirstBill =MAX(id) FROM dbo.Bill WHERE idTable=@idTable1 AND status=0
+		
+	END
+
+	SELECT @isFirstTableEmpty=COUNT(*) FROM dbo.BillInfor WHERE idBill=@idFirstBill
+
+	IF(@idSecondBill IS NULL)
+	BEGIN
+		INSERT INTO dbo.Bill
+		(
+		    DateCheckIn,
+		    DateCheckOut,
+		    idTable,
+		    status
+		)
+		VALUES
+		(   GETDATE(), -- DateCheckIn - date
+		    NULL, -- DateCheckOut - date
+		    @idTable2,         -- idTable - int
+		    0       -- status - int
+		    )
+		SELECT @idSecondBill =MAX(id) FROM dbo.Bill WHERE idTable=@idTable2 AND status=0
+	END
+
+	SELECT @isSecondTableEmpty=COUNT(*) FROM dbo.BillInfor WHERE idBill=@idSecondBill
+
+	SELECT id INTO IDBillInforTable FROM dbo.BillInfor WHERE idBill=@idSecondBill
+	UPDATE dbo.BillInfor SET idBill=@idSecondBill WHERE idBill=@idFirstBill
+	UPDATE dbo.BillInfor SET idBill=@idFirstBill WHERE id IN (SELECT*FROM dbo.IDBillInforTable)
+	DROP TABLE dbo.IDBillInforTable
+
+	IF(@isFirstTableEmpty=0)
+		UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable2
+	IF(@isSecondTableEmpty=0)
+		UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable1
+END
+GO
+
+

@@ -23,6 +23,7 @@ namespace Coffee_Project
 			InitializeComponent();
 			LoadTable();
 			LoadCategory();
+			LoadComboboxTable(cbSwitchTable);
 		}
 		#region Method
 		void LoadCategory()
@@ -76,9 +77,14 @@ namespace Coffee_Project
 				lsvBill.Items.Add(lsvItem);
 			}
 			CultureInfo cultture = new CultureInfo("vi-VN");
-			//Thread.CurrentThread.CurrentCulture = cultture;
+			Thread.CurrentThread.CurrentCulture = cultture;
 			txbTotalPrice.Text = totalPrice.ToString("c", cultture);
         }
+		void LoadComboboxTable(ComboBox cb)
+		{
+			cb.DataSource = TableDAO.Instance.LoadTableList();
+			cb.DisplayMember = "Name";
+		}
 		#endregion
 
 		#region Events
@@ -139,14 +145,27 @@ namespace Coffee_Project
 		{
 			Table table = lsvBill.Tag as Table;
 			int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
+			int discount = (int)nmDiscount.Value;
+			double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
+			double finalTotalPrice = totalPrice - (totalPrice / 100)*discount;
 			if (idBill != -1)
 			{
-				if(MessageBox.Show("Bạn có chắc thanh toán hóa đơn cho " +table.Name, "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
+				if(MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho {0}?\n Tổng tiền - (Tổng tiền) x Giảm giá\n={1} - {1} x {2}%\n={3}", table.Name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
 				{
-					BillDAO.Instance.CheckOut(idBill);
+					BillDAO.Instance.CheckOut(idBill, discount);
 					ShowBill(table.ID);
 					LoadTable();
 				}
+			}
+		}
+		private void btnSwitchTable_Click(object sender, EventArgs e)
+		{
+			int id1 = (lsvBill.Tag as Table).ID;
+			int id2 = (cbSwitchTable.SelectedItem as Table).ID;
+			if (MessageBox.Show(string.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1} không?", (lsvBill.Tag as Table).Name, (cbSwitchTable.SelectedItem as Table).Name), "Thông báo", MessageBoxButtons.YesNo)==DialogResult.Yes)
+			{
+				TableDAO.Instance.SwitchTable(id1, id2);
+				LoadTable();
 			}
 		}
 		#endregion
