@@ -17,6 +17,11 @@ namespace Coffee_Project.DAO
 			private set => instance = value; 
 		}
 		private BillInforDAO() { }
+
+		public void DeleteBillInforByFoodID(int id)
+		{
+			DataProvider.Instance.ExecuteQuery("DELETE dbo.BillInfor WHERE idFood=" + id);
+		}
 		public List<BillInfor>GetListBillInfor(int id)
 		{
 			List<BillInfor> listBillInfor = new List<BillInfor>();

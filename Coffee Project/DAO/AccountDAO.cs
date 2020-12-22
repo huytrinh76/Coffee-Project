@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Coffee_Project.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -22,6 +23,24 @@ namespace Coffee_Project.DAO
 			string query = "USP_Login @userName , @passWord";
 			DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {userName, passWord });
 			return result.Rows.Count>0;
+		}
+		public Account GetAccountByUserName(string userName)
+		{
+			DataTable data= DataProvider.Instance.ExecuteQuery("SELECT* FROM dbo.Account WHERE UserName='"+userName+"'");
+			foreach(DataRow item in data.Rows)
+			{
+				return new Account(item);
+			}
+			return null;
+		}
+		public bool UpdateAccount(string userName, string displayName, string passWord, string newPass)
+		{
+			int result = DataProvider.Instance.ExecuteNonQuery("EXEC USP_UpdateAccount @userName , @displayName , @passWord , @newPassword", new object[] {userName, displayName, passWord, newPass });
+			return result > 0;
+		}
+		public DataTable GetListAccount()
+		{
+			return DataProvider.Instance.ExecuteQuery("SELECT UserName, DisplayName, Type  FROM dbo.Account");
 		}
 	}
 }

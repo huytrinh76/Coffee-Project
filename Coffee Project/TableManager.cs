@@ -13,19 +13,31 @@ using static System.Windows.Forms.ListViewItem;
 using Menu = Coffee_Project.DTO.Menu;
 using System.Globalization;
 using System.Threading;
+using static Coffee_Project.AccountProfile;
 
 namespace Coffee_Project
 {
 	public partial class TableManager : Form
 	{
-		public TableManager()
+		private Account loginAccount;
+
+		public Account LoginAccount { get => loginAccount; set => loginAccount = value; }
+
+		public TableManager(Account acc)
 		{
 			InitializeComponent();
+			this.LoginAccount = acc;
 			LoadTable();
 			LoadCategory();
 			LoadComboboxTable(cbSwitchTable);
+			ChangeAccount(loginAccount.Type);
 		}
 		#region Method
+		void ChangeAccount(int type)
+		{
+			adminToolStripMenuItem.Enabled = type == 1;
+			thôngTinTàiKhoảnToolStripMenuItem.Text += "[" + LoginAccount.DisplayName +"]";
+		}
 		void LoadCategory()
 		{
 			List<Category> listCategory = CategoryDAO.Instance.GetListCategory();
@@ -102,15 +114,53 @@ namespace Coffee_Project
 
 		private void thôngTinCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			AccountProfile f = new AccountProfile();
+			AccountProfile f = new AccountProfile(LoginAccount);
+			f.UpdateAccount += F_UpdateAccount; ;
 			f.ShowDialog();
+		}
+
+		private void F_UpdateAccount(object sender, AccountEvent e)
+		{
+			thôngTinTàiKhoảnToolStripMenuItem.Text = "Thông tin tài khoản ("+e.Acc.DisplayName+")";
 		}
 
 		private void adminToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Admin f = new Admin();
+			f.InsertFood += F_InsertFood;
+			f.DeleteFood += F_DeleteFood;
+			f.UpdateFood += F_UpdateFood;
 			f.ShowDialog();
 		}
+
+		private void F_UpdateFood(object sender, EventArgs e)
+		{
+			LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+			if (lsvBill.Tag != null)
+			{
+				ShowBill((lsvBill.Tag as Table).ID);
+			}
+		}
+
+		private void F_DeleteFood(object sender, EventArgs e)
+		{
+			LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+			if (lsvBill.Tag != null)
+			{
+				ShowBill((lsvBill.Tag as Table).ID);
+			}
+			LoadTable();
+		}
+
+		private void F_InsertFood(object sender, EventArgs e)
+		{
+			LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+			if (lsvBill.Tag !=null)
+			{
+			ShowBill((lsvBill.Tag as Table).ID);
+			}
+		}
+
 		private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int id = 0;
@@ -126,6 +176,11 @@ namespace Coffee_Project
 		private void btnAddFood_Click(object sender, EventArgs e)
 		{
 			Table table = lsvBill.Tag as Table;
+			if (table==null)
+			{
+				MessageBox.Show("Hãy chọn bàn");
+				return;
+			}
 			int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
 			int foodID = (cbFood.SelectedItem as Food).ID;
 			int count = (int)nmFoodCount.Value;
@@ -152,7 +207,7 @@ namespace Coffee_Project
 			{
 				if(MessageBox.Show(string.Format("Bạn có chắc thanh toán hóa đơn cho {0}?\n Tổng tiền - (Tổng tiền) x Giảm giá\n={1} - {1} x {2}%\n={3}", table.Name, totalPrice, discount, finalTotalPrice), "Thông báo", MessageBoxButtons.OKCancel) == DialogResult.OK)
 				{
-					BillDAO.Instance.CheckOut(idBill, discount);
+					BillDAO.Instance.CheckOut(idBill, discount, (int)finalTotalPrice);
 					ShowBill(table.ID);
 					LoadTable();
 				}

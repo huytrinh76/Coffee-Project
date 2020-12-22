@@ -1,4 +1,5 @@
 ﻿using Coffee_Project.DAO;
+using Coffee_Project.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,10 +38,11 @@ namespace Coffee_Project
 			string passWord = txbPassWord.Text;
 			if (Login(userName, passWord))
 			{
-			TableManager f = new TableManager();
-			this.Hide();
-			f.ShowDialog();
-			this.Show();
+				Account loginAccount = AccountDAO.Instance.GetAccountByUserName(userName);
+				TableManager f = new TableManager(loginAccount);
+				this.Hide();
+				f.ShowDialog();
+				this.Show();
 			}
 			else
 			{

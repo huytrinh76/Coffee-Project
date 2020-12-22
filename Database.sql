@@ -84,8 +84,6 @@ BEGIN
 END
 GO
 
-EXEC dbo.USP_GetListAccountByUserName @userName = N'IRFV' -- nvarchar(100)
-GO 
 
 CREATE PROC USP_Login
 @userName nvarchar(100), @passWord nvarchar(100)
@@ -346,23 +344,6 @@ VALUES
     )
 GO
 
-SELECT *FROM dbo.Bill
-SELECT *FROM dbo.BillInfor
-SELECT *FROM dbo.FoodCategory
-SELECT *FROM dbo.Food
-GO 
-SELECT*FROM dbo.TableFood
-
-SELECT *FROM dbo.Bill WHERE idTable=1 AND status=0
-
-SELECT f.name, bi.count, f.price, f.price*bi.count AS totalPrice
-FROM dbo.BillInfor AS bi, dbo.Bill AS b, dbo.Food AS f
-WHERE bi.idBill=b.id AND bi.idFood=f.id AND b.idTable=1
-
-SELECT *FROM dbo.Food WHERE idCategory=1
-SELECT*FROM dbo.FoodCategory
-GO
-
 CREATE PROC USP_InsertBill
 @idTable INT
 AS
@@ -372,15 +353,13 @@ BEGIN
 	    DateCheckIn,
 	    DateCheckOut,
 	    idTable,
-	    status,
-		discount
+	    status
 	)
 	VALUES
 	(   GETDATE(), -- DateCheckIn - date
 	    NULL, -- DateCheckOut - date
 	    @idTable,         -- idTable - int
-	    0,          -- status - int
-		0
+	    0         -- status - int
 	    )
 END
 GO
@@ -464,8 +443,9 @@ BEGIN
 END
 GO
 
-CREATE TABLE dbo.Bill
+ALTER TABLE dbo.Bill 
 ADD discount INT
+GO
 
 UPDATE dbo.Bill SET discount=0
 GO
@@ -536,4 +516,55 @@ BEGIN
 END
 GO
 
+ALTER TABLE dbo.Bill ADD totalPrice INT
+GO
 
+CREATE PROC USP_GetListBillByDate
+@checkIn DATE, @checkOut DATE
+AS
+BEGIN
+	SELECT t.name AS [Bàn], b.totalPrice AS [Tổng hóa đơn], b.DateCheckIn AS [Ngày vào], b.DateCheckOut AS [Ngày ra], b.discount AS [Giảm giá]
+	FROM dbo.Bill AS b, dbo.TableFood AS t
+	WHERE b.status=1 AND t.id=b.idTable AND b.DateCheckIn>=@checkIn AND b.DateCheckOut<=@checkOut
+END
+GO
+
+CREATE PROC USP_UpdateAccount
+@userName NVARCHAR(100), @displayName NVARCHAR(100), @passWord NVARCHAR(100), @newPassword NVARCHAR(100)
+AS
+BEGIN
+	DECLARE @isRightPass INT=0
+	SELECT @isRightPass =COUNT(*) FROM dbo.Account WHERE UserName=@userName AND PassWord=@passWord
+	IF(@isRightPass=1)
+		BEGIN
+			IF(@newPassword=NULL OR @newPassword='')
+				BEGIN
+					UPDATE dbo.Account SET DisplayName=@displayName WHERE UserName=@userName
+				END
+			ELSE
+				UPDATE dbo.Account SET DisplayName=@displayName, PassWord=@newPassword WHERE UserName=@userName
+		END
+END
+GO
+
+CREATE TRIGGER UTG_DeleteBillInfor
+ON dbo.BillInfor FOR DELETE
+AS
+BEGIN
+	DECLARE @idBillInfor INT
+	DECLARE @idBill INT
+	SELECT @idBillInfor=id, @idBill=Deleted.idBill FROM Deleted
+
+	DECLARE @idTable INT
+	SELECT @idTable=idTable FROM dbo.Bill WHERE id=@idBill
+	
+	DECLARE @count INT =0
+	SELECT @count=COUNT(*) FROM dbo.BillInfor AS bi, dbo.Bill AS b WHERE b.id=bi.idBill AND b.id=@idBill AND b.status=0
+
+	IF(@count>0)
+		UPDATE dbo.TableFood SET status=N'Trống' WHERE id=@idTable
+END
+GO
+
+CREATE FUNCTION [dbo].[fuConvertToUnsign1] ( @strInput NVARCHAR(4000) ) RETURNS NVARCHAR(4000) AS BEGIN IF @strInput IS NULL RETURN @strInput IF @strInput = '' RETURN @strInput DECLARE @RT NVARCHAR(4000) DECLARE @SIGN_CHARS NCHAR(136) DECLARE @UNSIGN_CHARS NCHAR (136) SET @SIGN_CHARS = N'ăâđêôơưàảãạáằẳẵặắầẩẫậấèẻẽẹéềểễệế ìỉĩịíòỏõọóồổỗộốờởỡợớùủũụúừửữựứỳỷỹỵý ĂÂĐÊÔƠƯÀẢÃẠÁẰẲẴẶẮẦẨẪẬẤÈẺẼẸÉỀỂỄỆẾÌỈĨỊÍ ÒỎÕỌÓỒỔỖỘỐỜỞỠỢỚÙỦŨỤÚỪỬỮỰỨỲỶỸỴÝ' +NCHAR(272)+ NCHAR(208) SET @UNSIGN_CHARS = N'aadeoouaaaaaaaaaaaaaaaeeeeeeeeee iiiiiooooooooooooooouuuuuuuuuuyyyyy AADEOOUAAAAAAAAAAAAAAAEEEEEEEEEEIIIII OOOOOOOOOOOOOOOUUUUUUUUUUYYYYYDD' DECLARE @COUNTER int DECLARE @COUNTER1 int SET @COUNTER = 1 WHILE (@COUNTER <=LEN(@strInput)) BEGIN SET @COUNTER1 = 1 WHILE (@COUNTER1 <=LEN(@SIGN_CHARS)+1) BEGIN IF UNICODE(SUBSTRING(@SIGN_CHARS, @COUNTER1,1)) = UNICODE(SUBSTRING(@strInput,@COUNTER ,1) ) BEGIN IF @COUNTER=1 SET @strInput = SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)-1) ELSE SET @strInput = SUBSTRING(@strInput, 1, @COUNTER-1) +SUBSTRING(@UNSIGN_CHARS, @COUNTER1,1) + SUBSTRING(@strInput, @COUNTER+1,LEN(@strInput)- @COUNTER) BREAK END SET @COUNTER1 = @COUNTER1 +1 END SET @COUNTER = @COUNTER +1 END SET @strInput = replace(@strInput,' ','-') RETURN @strInput END
+GO
