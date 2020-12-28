@@ -17,6 +17,7 @@ namespace Coffee_Project
 	{
 		BindingSource foodList = new BindingSource();
 		BindingSource accountList = new BindingSource();
+		public Account loginAccount;
 		public Admin()
 		{
 			InitializeComponent();
@@ -69,11 +70,63 @@ namespace Coffee_Project
 		{
 			txbUserName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "UserName", true, DataSourceUpdateMode.Never));
 			txbDisplayName.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "DisplayName", true, DataSourceUpdateMode.Never));
-			txbAccountType.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
+			nmTypeAccount.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "Type", true, DataSourceUpdateMode.Never));
 		}
 		void LoadAccount()
 		{
 			accountList.DataSource = AccountDAO.Instance.GetListAccount();
+		}
+		void AddAccount(string userName, string displayName, int type)
+		{
+			if(AccountDAO.Instance.InsertAccount(userName, displayName, type))
+			{
+				MessageBox.Show("Thêm tài khoản thành công");
+			}
+			else
+			{
+				MessageBox.Show("Có lỗi trong quá trình thêm tài khoản");
+			}
+			LoadAccount();
+		}
+		void EditAccount(string userName, string displayName, int type)
+		{
+			if (AccountDAO.Instance.UpdateAccount(userName, displayName, type))
+			{
+				MessageBox.Show("Cập nhật tài khoản thành công");
+			}
+			else
+			{
+				MessageBox.Show("Có lỗi trong quá trình cập nhật tài khoản");
+			}
+			LoadAccount();
+		}
+		void DeleteAccount(string userName)
+		{
+			if (loginAccount.UserName.Equals(userName))
+			{
+				MessageBox.Show("Phiên làm việc đang dùng, không thể xóa tài khoản!");
+				return;
+			}
+			if (AccountDAO.Instance.DeleteAccount(userName))
+			{
+				MessageBox.Show("Xóa tài khoản thành công");
+			}
+			else
+			{
+				MessageBox.Show("Có lỗi trong quá trình xóa tài khoản");
+			}
+			LoadAccount();
+		}
+		void ResetPass(string userName)
+		{
+			if (AccountDAO.Instance.ResetPass(userName))
+			{
+				MessageBox.Show("Thao tác thành công");
+			}
+			else
+			{
+				MessageBox.Show("Thao tác thất bại");
+			}
 		}
 		#endregion
 
@@ -203,6 +256,34 @@ namespace Coffee_Project
 		private void btnShowAccount_Click(object sender, EventArgs e)
 		{
 			LoadAccount();
+		}
+
+		private void btnAddAccount_Click(object sender, EventArgs e)
+		{
+			string userName = txbUserName.Text;
+			string displayName = txbDisplayName.Text;
+			int type = (int)nmTypeAccount.Value;
+			AddAccount(userName, displayName, type);
+		}
+
+		private void btnDelAccount_Click(object sender, EventArgs e)
+		{
+			string userName = txbUserName.Text;
+			DeleteAccount(userName);
+		}
+
+		private void btnEditAccount_Click(object sender, EventArgs e)
+		{
+			string userName = txbUserName.Text;
+			string displayName = txbDisplayName.Text;
+			int type = (int)nmTypeAccount.Value;
+			EditAccount(userName, displayName, type);
+		}
+
+		private void btnResetPassWord_Click(object sender, EventArgs e)
+		{
+			string userName = txbUserName.Text;
+			ResetPass(userName);
 		}
 		#endregion
 	}

@@ -92,7 +92,7 @@ namespace Coffee_Project
 			this.panel19 = new System.Windows.Forms.Panel();
 			this.label9 = new System.Windows.Forms.Label();
 			this.cbTableStatus = new System.Windows.Forms.ComboBox();
-			this.txbAccountType = new System.Windows.Forms.TextBox();
+			this.nmTypeAccount = new System.Windows.Forms.NumericUpDown();
 			this.tpAccount.SuspendLayout();
 			this.panel21.SuspendLayout();
 			this.panel23.SuspendLayout();
@@ -117,6 +117,7 @@ namespace Coffee_Project
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
 			this.tcAdmin.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tpAccount
@@ -152,10 +153,11 @@ namespace Coffee_Project
 			this.btnResetPassWord.TabIndex = 4;
 			this.btnResetPassWord.Text = "Đặt lại mật khẩu";
 			this.btnResetPassWord.UseVisualStyleBackColor = true;
+			this.btnResetPassWord.Click += new System.EventHandler(this.btnResetPassWord_Click);
 			// 
 			// panel23
 			// 
-			this.panel23.Controls.Add(this.txbAccountType);
+			this.panel23.Controls.Add(this.nmTypeAccount);
 			this.panel23.Controls.Add(this.label11);
 			this.panel23.Location = new System.Drawing.Point(4, 87);
 			this.panel23.Name = "panel23";
@@ -211,7 +213,6 @@ namespace Coffee_Project
 			// 
 			this.txbUserName.Location = new System.Drawing.Point(147, 5);
 			this.txbUserName.Name = "txbUserName";
-			this.txbUserName.ReadOnly = true;
 			this.txbUserName.Size = new System.Drawing.Size(236, 20);
 			this.txbUserName.TabIndex = 1;
 			// 
@@ -256,6 +257,7 @@ namespace Coffee_Project
 			this.btnEditAccount.TabIndex = 2;
 			this.btnEditAccount.Text = "Sửa";
 			this.btnEditAccount.UseVisualStyleBackColor = true;
+			this.btnEditAccount.Click += new System.EventHandler(this.btnEditAccount_Click);
 			// 
 			// btnDelAccount
 			// 
@@ -266,6 +268,7 @@ namespace Coffee_Project
 			this.btnDelAccount.TabIndex = 1;
 			this.btnDelAccount.Text = "Xóa";
 			this.btnDelAccount.UseVisualStyleBackColor = true;
+			this.btnDelAccount.Click += new System.EventHandler(this.btnDelAccount_Click);
 			// 
 			// btnAddAccount
 			// 
@@ -276,6 +279,7 @@ namespace Coffee_Project
 			this.btnAddAccount.TabIndex = 0;
 			this.btnAddAccount.Text = "Thêm";
 			this.btnAddAccount.UseVisualStyleBackColor = true;
+			this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
 			// 
 			// panel27
 			// 
@@ -287,6 +291,7 @@ namespace Coffee_Project
 			// 
 			// dtgvAccount
 			// 
+			this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dtgvAccount.Location = new System.Drawing.Point(3, 3);
 			this.dtgvAccount.Name = "dtgvAccount";
@@ -715,12 +720,17 @@ namespace Coffee_Project
 			this.cbTableStatus.Size = new System.Drawing.Size(257, 21);
 			this.cbTableStatus.TabIndex = 1;
 			// 
-			// txbAccountType
+			// nmTypeAccount
 			// 
-			this.txbAccountType.Location = new System.Drawing.Point(150, 7);
-			this.txbAccountType.Name = "txbAccountType";
-			this.txbAccountType.Size = new System.Drawing.Size(236, 20);
-			this.txbAccountType.TabIndex = 2;
+			this.nmTypeAccount.Location = new System.Drawing.Point(152, 5);
+			this.nmTypeAccount.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.nmTypeAccount.Name = "nmTypeAccount";
+			this.nmTypeAccount.Size = new System.Drawing.Size(34, 20);
+			this.nmTypeAccount.TabIndex = 1;
 			// 
 			// Admin
 			// 
@@ -763,6 +773,7 @@ namespace Coffee_Project
 			this.panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
 			this.tcAdmin.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.nmTypeAccount)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -832,6 +843,6 @@ namespace Coffee_Project
 		private System.Windows.Forms.Panel panel19;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.ComboBox cbTableStatus;
-		private System.Windows.Forms.TextBox txbAccountType;
+		private System.Windows.Forms.NumericUpDown nmTypeAccount;
 	}
 }
