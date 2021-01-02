@@ -272,14 +272,14 @@ namespace Coffee_Project
 			// thôngTinCáNhânToolStripMenuItem
 			// 
 			this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-			this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
 			this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
 			this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
 			// 
 			// đăngXuấtToolStripMenuItem
 			// 
 			this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-			this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
 			this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
 			this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
 			// 
@@ -310,7 +310,7 @@ namespace Coffee_Project
 			// 
 			this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
 			this.thanhToánToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-			this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
 			this.thanhToánToolStripMenuItem.Text = "Thêm món";
 			this.thanhToánToolStripMenuItem.Click += new System.EventHandler(this.thanhToánToolStripMenuItem_Click);
 			// 
@@ -318,7 +318,7 @@ namespace Coffee_Project
 			// 
 			this.thêmMónToolStripMenuItem.Name = "thêmMónToolStripMenuItem";
 			this.thêmMónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-			this.thêmMónToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.thêmMónToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
 			this.thêmMónToolStripMenuItem.Text = "Thanh toán";
 			this.thêmMónToolStripMenuItem.Click += new System.EventHandler(this.thêmMónToolStripMenuItem_Click);
 			// 
@@ -335,7 +335,7 @@ namespace Coffee_Project
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "TableManager";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "Quản lý Quán ăn Ngon";
+			this.Text = "Quản lý quán Coffee Gochi";
 			this.panel2.ResumeLayout(false);
 			this.panel3.ResumeLayout(false);
 			this.panel3.PerformLayout();
