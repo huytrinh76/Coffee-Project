@@ -328,5 +328,10 @@ namespace Coffee_Project
 			txbPageBill.Text = page.ToString();
 		}
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			MessageBox.Show("Bạn có muốn gửi báo cáo", "Gửi báo cáo thành công", MessageBoxButtons.OKCancel);
+        }
     }
 }

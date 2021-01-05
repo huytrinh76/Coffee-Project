@@ -73,6 +73,11 @@ namespace Coffee_Project
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtgvFood = new System.Windows.Forms.DataGridView();
             this.tpBill = new System.Windows.Forms.TabPage();
+            this.txbPageBill = new System.Windows.Forms.TextBox();
+            this.btnNextBillPage = new System.Windows.Forms.Button();
+            this.btnPrevioursBillPage = new System.Windows.Forms.Button();
+            this.btnLastBillPage = new System.Windows.Forms.Button();
+            this.btnFirstBillPage = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnViewBill = new System.Windows.Forms.Button();
             this.dtpkToDate = new System.Windows.Forms.DateTimePicker();
@@ -93,11 +98,9 @@ namespace Coffee_Project
             this.panel19 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.cbTableStatus = new System.Windows.Forms.ComboBox();
-            this.btnFirstBillPage = new System.Windows.Forms.Button();
-            this.btnLastBillPage = new System.Windows.Forms.Button();
-            this.btnPrevioursBillPage = new System.Windows.Forms.Button();
-            this.btnNextBillPage = new System.Windows.Forms.Button();
-            this.txbPageBill = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tpAccount.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel23.SuspendLayout();
@@ -123,6 +126,7 @@ namespace Coffee_Project
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).BeginInit();
             this.tcAdmin.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tpAccount
@@ -131,9 +135,9 @@ namespace Coffee_Project
             this.tpAccount.Controls.Add(this.panel26);
             this.tpAccount.Controls.Add(this.panel27);
             this.tpAccount.Location = new System.Drawing.Point(4, 25);
-            this.tpAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpAccount.Margin = new System.Windows.Forms.Padding(4);
             this.tpAccount.Name = "tpAccount";
-            this.tpAccount.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpAccount.Padding = new System.Windows.Forms.Padding(4);
             this.tpAccount.Size = new System.Drawing.Size(1027, 495);
             this.tpAccount.TabIndex = 4;
             this.tpAccount.Text = "Tài khoản";
@@ -146,7 +150,7 @@ namespace Coffee_Project
             this.panel21.Controls.Add(this.panel24);
             this.panel21.Controls.Add(this.panel25);
             this.panel21.Location = new System.Drawing.Point(492, 107);
-            this.panel21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel21.Margin = new System.Windows.Forms.Padding(4);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(524, 378);
             this.panel21.TabIndex = 4;
@@ -155,7 +159,7 @@ namespace Coffee_Project
             // 
             this.btnResetPassWord.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnResetPassWord.Location = new System.Drawing.Point(239, 181);
-            this.btnResetPassWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnResetPassWord.Margin = new System.Windows.Forms.Padding(4);
             this.btnResetPassWord.Name = "btnResetPassWord";
             this.btnResetPassWord.Size = new System.Drawing.Size(113, 85);
             this.btnResetPassWord.TabIndex = 4;
@@ -168,7 +172,7 @@ namespace Coffee_Project
             this.panel23.Controls.Add(this.nmTypeAccount);
             this.panel23.Controls.Add(this.label11);
             this.panel23.Location = new System.Drawing.Point(5, 107);
-            this.panel23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel23.Margin = new System.Windows.Forms.Padding(4);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(515, 44);
             this.panel23.TabIndex = 3;
@@ -176,7 +180,7 @@ namespace Coffee_Project
             // nmTypeAccount
             // 
             this.nmTypeAccount.Location = new System.Drawing.Point(203, 6);
-            this.nmTypeAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nmTypeAccount.Margin = new System.Windows.Forms.Padding(4);
             this.nmTypeAccount.Maximum = new decimal(new int[] {
             1,
             0,
@@ -202,7 +206,7 @@ namespace Coffee_Project
             this.panel24.Controls.Add(this.txbDisplayName);
             this.panel24.Controls.Add(this.label12);
             this.panel24.Location = new System.Drawing.Point(5, 55);
-            this.panel24.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel24.Margin = new System.Windows.Forms.Padding(4);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(515, 44);
             this.panel24.TabIndex = 2;
@@ -210,7 +214,7 @@ namespace Coffee_Project
             // txbDisplayName
             // 
             this.txbDisplayName.Location = new System.Drawing.Point(196, 6);
-            this.txbDisplayName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbDisplayName.Margin = new System.Windows.Forms.Padding(4);
             this.txbDisplayName.Name = "txbDisplayName";
             this.txbDisplayName.Size = new System.Drawing.Size(313, 22);
             this.txbDisplayName.TabIndex = 1;
@@ -231,7 +235,7 @@ namespace Coffee_Project
             this.panel25.Controls.Add(this.txbUserName);
             this.panel25.Controls.Add(this.label13);
             this.panel25.Location = new System.Drawing.Point(5, 4);
-            this.panel25.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel25.Margin = new System.Windows.Forms.Padding(4);
             this.panel25.Name = "panel25";
             this.panel25.Size = new System.Drawing.Size(515, 44);
             this.panel25.TabIndex = 1;
@@ -239,7 +243,7 @@ namespace Coffee_Project
             // txbUserName
             // 
             this.txbUserName.Location = new System.Drawing.Point(196, 6);
-            this.txbUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(313, 22);
             this.txbUserName.TabIndex = 1;
@@ -262,7 +266,7 @@ namespace Coffee_Project
             this.panel26.Controls.Add(this.btnDelAccount);
             this.panel26.Controls.Add(this.btnAddAccount);
             this.panel26.Location = new System.Drawing.Point(8, 7);
-            this.panel26.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel26.Margin = new System.Windows.Forms.Padding(4);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(476, 92);
             this.panel26.TabIndex = 5;
@@ -271,7 +275,7 @@ namespace Coffee_Project
             // 
             this.btnShowAccount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowAccount.Location = new System.Drawing.Point(377, 4);
-            this.btnShowAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowAccount.Name = "btnShowAccount";
             this.btnShowAccount.Size = new System.Drawing.Size(95, 85);
             this.btnShowAccount.TabIndex = 3;
@@ -283,7 +287,7 @@ namespace Coffee_Project
             // 
             this.btnEditAccount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditAccount.Location = new System.Drawing.Point(252, 4);
-            this.btnEditAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditAccount.Name = "btnEditAccount";
             this.btnEditAccount.Size = new System.Drawing.Size(105, 85);
             this.btnEditAccount.TabIndex = 2;
@@ -295,7 +299,7 @@ namespace Coffee_Project
             // 
             this.btnDelAccount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelAccount.Location = new System.Drawing.Point(133, 4);
-            this.btnDelAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelAccount.Name = "btnDelAccount";
             this.btnDelAccount.Size = new System.Drawing.Size(111, 85);
             this.btnDelAccount.TabIndex = 1;
@@ -307,7 +311,7 @@ namespace Coffee_Project
             // 
             this.btnAddAccount.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddAccount.Location = new System.Drawing.Point(4, 4);
-            this.btnAddAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddAccount.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(111, 85);
             this.btnAddAccount.TabIndex = 0;
@@ -319,7 +323,7 @@ namespace Coffee_Project
             // 
             this.panel27.Controls.Add(this.dtgvAccount);
             this.panel27.Location = new System.Drawing.Point(8, 107);
-            this.panel27.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel27.Margin = new System.Windows.Forms.Padding(4);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(476, 378);
             this.panel27.TabIndex = 3;
@@ -329,7 +333,7 @@ namespace Coffee_Project
             this.dtgvAccount.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvAccount.Location = new System.Drawing.Point(4, 4);
-            this.dtgvAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvAccount.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvAccount.Name = "dtgvAccount";
             this.dtgvAccount.RowHeadersWidth = 51;
             this.dtgvAccount.Size = new System.Drawing.Size(468, 370);
@@ -342,9 +346,9 @@ namespace Coffee_Project
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1027, 495);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thức ăn";
@@ -355,7 +359,7 @@ namespace Coffee_Project
             this.panel6.Controls.Add(this.txbSearchFoodName);
             this.panel6.Controls.Add(this.btnSearchFood);
             this.panel6.Location = new System.Drawing.Point(492, 7);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(524, 92);
             this.panel6.TabIndex = 2;
@@ -363,7 +367,7 @@ namespace Coffee_Project
             // txbSearchFoodName
             // 
             this.txbSearchFoodName.Location = new System.Drawing.Point(5, 36);
-            this.txbSearchFoodName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbSearchFoodName.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchFoodName.Name = "txbSearchFoodName";
             this.txbSearchFoodName.Size = new System.Drawing.Size(383, 22);
             this.txbSearchFoodName.TabIndex = 5;
@@ -372,7 +376,7 @@ namespace Coffee_Project
             // 
             this.btnSearchFood.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchFood.Location = new System.Drawing.Point(397, 4);
-            this.btnSearchFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearchFood.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchFood.Name = "btnSearchFood";
             this.btnSearchFood.Size = new System.Drawing.Size(123, 85);
             this.btnSearchFood.TabIndex = 4;
@@ -387,7 +391,7 @@ namespace Coffee_Project
             this.panel5.Controls.Add(this.panel8);
             this.panel5.Controls.Add(this.panel7);
             this.panel5.Location = new System.Drawing.Point(492, 107);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(524, 378);
             this.panel5.TabIndex = 1;
@@ -397,7 +401,7 @@ namespace Coffee_Project
             this.panel10.Controls.Add(this.nmFoodPrice);
             this.panel10.Controls.Add(this.label4);
             this.panel10.Location = new System.Drawing.Point(5, 159);
-            this.panel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(515, 44);
             this.panel10.TabIndex = 4;
@@ -405,7 +409,7 @@ namespace Coffee_Project
             // nmFoodPrice
             // 
             this.nmFoodPrice.Location = new System.Drawing.Point(151, 6);
-            this.nmFoodPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nmFoodPrice.Margin = new System.Windows.Forms.Padding(4);
             this.nmFoodPrice.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -431,7 +435,7 @@ namespace Coffee_Project
             this.panel9.Controls.Add(this.cbFoodCategory);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(5, 107);
-            this.panel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(515, 44);
             this.panel9.TabIndex = 3;
@@ -440,7 +444,7 @@ namespace Coffee_Project
             // 
             this.cbFoodCategory.FormattingEnabled = true;
             this.cbFoodCategory.Location = new System.Drawing.Point(151, 5);
-            this.cbFoodCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbFoodCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cbFoodCategory.Name = "cbFoodCategory";
             this.cbFoodCategory.Size = new System.Drawing.Size(359, 24);
             this.cbFoodCategory.TabIndex = 1;
@@ -461,7 +465,7 @@ namespace Coffee_Project
             this.panel8.Controls.Add(this.txbFoodName);
             this.panel8.Controls.Add(this.label2);
             this.panel8.Location = new System.Drawing.Point(5, 55);
-            this.panel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(515, 44);
             this.panel8.TabIndex = 2;
@@ -469,7 +473,7 @@ namespace Coffee_Project
             // txbFoodName
             // 
             this.txbFoodName.Location = new System.Drawing.Point(151, 6);
-            this.txbFoodName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbFoodName.Margin = new System.Windows.Forms.Padding(4);
             this.txbFoodName.Name = "txbFoodName";
             this.txbFoodName.Size = new System.Drawing.Size(359, 22);
             this.txbFoodName.TabIndex = 1;
@@ -490,7 +494,7 @@ namespace Coffee_Project
             this.panel7.Controls.Add(this.txbFoodID);
             this.panel7.Controls.Add(this.label1);
             this.panel7.Location = new System.Drawing.Point(5, 4);
-            this.panel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(515, 44);
             this.panel7.TabIndex = 1;
@@ -498,7 +502,7 @@ namespace Coffee_Project
             // txbFoodID
             // 
             this.txbFoodID.Location = new System.Drawing.Point(87, 6);
-            this.txbFoodID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbFoodID.Margin = new System.Windows.Forms.Padding(4);
             this.txbFoodID.Name = "txbFoodID";
             this.txbFoodID.ReadOnly = true;
             this.txbFoodID.Size = new System.Drawing.Size(423, 22);
@@ -523,7 +527,7 @@ namespace Coffee_Project
             this.panel4.Controls.Add(this.btnDelFood);
             this.panel4.Controls.Add(this.btnAddFood);
             this.panel4.Location = new System.Drawing.Point(8, 7);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(476, 92);
             this.panel4.TabIndex = 1;
@@ -532,7 +536,7 @@ namespace Coffee_Project
             // 
             this.btnShowFood.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnShowFood.Location = new System.Drawing.Point(377, 4);
-            this.btnShowFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnShowFood.Margin = new System.Windows.Forms.Padding(4);
             this.btnShowFood.Name = "btnShowFood";
             this.btnShowFood.Size = new System.Drawing.Size(95, 85);
             this.btnShowFood.TabIndex = 3;
@@ -544,7 +548,7 @@ namespace Coffee_Project
             // 
             this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(252, 4);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(105, 85);
             this.btnEdit.TabIndex = 2;
@@ -556,7 +560,7 @@ namespace Coffee_Project
             // 
             this.btnDelFood.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelFood.Location = new System.Drawing.Point(133, 4);
-            this.btnDelFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelFood.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelFood.Name = "btnDelFood";
             this.btnDelFood.Size = new System.Drawing.Size(111, 85);
             this.btnDelFood.TabIndex = 1;
@@ -568,7 +572,7 @@ namespace Coffee_Project
             // 
             this.btnAddFood.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddFood.Location = new System.Drawing.Point(4, 4);
-            this.btnAddFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddFood.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddFood.Name = "btnAddFood";
             this.btnAddFood.Size = new System.Drawing.Size(111, 85);
             this.btnAddFood.TabIndex = 0;
@@ -580,7 +584,7 @@ namespace Coffee_Project
             // 
             this.panel3.Controls.Add(this.dtgvFood);
             this.panel3.Location = new System.Drawing.Point(8, 107);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(476, 378);
             this.panel3.TabIndex = 0;
@@ -590,7 +594,7 @@ namespace Coffee_Project
             this.dtgvFood.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvFood.Location = new System.Drawing.Point(4, 4);
-            this.dtgvFood.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvFood.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvFood.Name = "dtgvFood";
             this.dtgvFood.RowHeadersWidth = 51;
             this.dtgvFood.Size = new System.Drawing.Size(468, 370);
@@ -606,13 +610,68 @@ namespace Coffee_Project
             this.tpBill.Controls.Add(this.panel2);
             this.tpBill.Controls.Add(this.panel1);
             this.tpBill.Location = new System.Drawing.Point(4, 25);
-            this.tpBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpBill.Margin = new System.Windows.Forms.Padding(4);
             this.tpBill.Name = "tpBill";
-            this.tpBill.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tpBill.Padding = new System.Windows.Forms.Padding(4);
             this.tpBill.Size = new System.Drawing.Size(1027, 495);
             this.tpBill.TabIndex = 0;
             this.tpBill.Text = "Doanh thu";
             this.tpBill.UseVisualStyleBackColor = true;
+            // 
+            // txbPageBill
+            // 
+            this.txbPageBill.Location = new System.Drawing.Point(479, 459);
+            this.txbPageBill.Name = "txbPageBill";
+            this.txbPageBill.ReadOnly = true;
+            this.txbPageBill.Size = new System.Drawing.Size(84, 22);
+            this.txbPageBill.TabIndex = 6;
+            this.txbPageBill.Text = "1";
+            this.txbPageBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbPageBill.TextChanged += new System.EventHandler(this.txbPageBill_TextChanged);
+            // 
+            // btnNextBillPage
+            // 
+            this.btnNextBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextBillPage.Location = new System.Drawing.Point(642, 451);
+            this.btnNextBillPage.Name = "btnNextBillPage";
+            this.btnNextBillPage.Size = new System.Drawing.Size(84, 37);
+            this.btnNextBillPage.TabIndex = 5;
+            this.btnNextBillPage.Text = "Sau";
+            this.btnNextBillPage.UseVisualStyleBackColor = true;
+            this.btnNextBillPage.Click += new System.EventHandler(this.btnNextBillPage_Click);
+            // 
+            // btnPrevioursBillPage
+            // 
+            this.btnPrevioursBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevioursBillPage.Location = new System.Drawing.Point(317, 451);
+            this.btnPrevioursBillPage.Name = "btnPrevioursBillPage";
+            this.btnPrevioursBillPage.Size = new System.Drawing.Size(84, 37);
+            this.btnPrevioursBillPage.TabIndex = 4;
+            this.btnPrevioursBillPage.Text = "Trước";
+            this.btnPrevioursBillPage.UseVisualStyleBackColor = true;
+            this.btnPrevioursBillPage.Click += new System.EventHandler(this.btnPrevioursBillPage_Click);
+            // 
+            // btnLastBillPage
+            // 
+            this.btnLastBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLastBillPage.Location = new System.Drawing.Point(936, 451);
+            this.btnLastBillPage.Name = "btnLastBillPage";
+            this.btnLastBillPage.Size = new System.Drawing.Size(84, 37);
+            this.btnLastBillPage.TabIndex = 3;
+            this.btnLastBillPage.Text = "Cuối";
+            this.btnLastBillPage.UseVisualStyleBackColor = true;
+            this.btnLastBillPage.Click += new System.EventHandler(this.btnLastBillPage_Click);
+            // 
+            // btnFirstBillPage
+            // 
+            this.btnFirstBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFirstBillPage.Location = new System.Drawing.Point(12, 451);
+            this.btnFirstBillPage.Name = "btnFirstBillPage";
+            this.btnFirstBillPage.Size = new System.Drawing.Size(84, 37);
+            this.btnFirstBillPage.TabIndex = 2;
+            this.btnFirstBillPage.Text = "Đầu";
+            this.btnFirstBillPage.UseVisualStyleBackColor = true;
+            this.btnFirstBillPage.Click += new System.EventHandler(this.btnFirstBillPage_Click);
             // 
             // panel2
             // 
@@ -620,7 +679,7 @@ namespace Coffee_Project
             this.panel2.Controls.Add(this.dtpkToDate);
             this.panel2.Controls.Add(this.dtpkFromDate);
             this.panel2.Location = new System.Drawing.Point(8, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 49);
             this.panel2.TabIndex = 1;
@@ -629,7 +688,7 @@ namespace Coffee_Project
             // 
             this.btnViewBill.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnViewBill.Location = new System.Drawing.Point(425, 1);
-            this.btnViewBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnViewBill.Margin = new System.Windows.Forms.Padding(4);
             this.btnViewBill.Name = "btnViewBill";
             this.btnViewBill.Size = new System.Drawing.Size(175, 44);
             this.btnViewBill.TabIndex = 2;
@@ -640,7 +699,7 @@ namespace Coffee_Project
             // dtpkToDate
             // 
             this.dtpkToDate.Location = new System.Drawing.Point(737, 5);
-            this.dtpkToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpkToDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpkToDate.Name = "dtpkToDate";
             this.dtpkToDate.Size = new System.Drawing.Size(265, 22);
             this.dtpkToDate.TabIndex = 1;
@@ -648,7 +707,7 @@ namespace Coffee_Project
             // dtpkFromDate
             // 
             this.dtpkFromDate.Location = new System.Drawing.Point(4, 4);
-            this.dtpkFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpkFromDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpkFromDate.Name = "dtpkFromDate";
             this.dtpkFromDate.Size = new System.Drawing.Size(265, 22);
             this.dtpkFromDate.TabIndex = 0;
@@ -657,7 +716,7 @@ namespace Coffee_Project
             // 
             this.panel1.Controls.Add(this.dtgvBill);
             this.panel1.Location = new System.Drawing.Point(8, 64);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 380);
             this.panel1.TabIndex = 0;
@@ -667,7 +726,7 @@ namespace Coffee_Project
             this.dtgvBill.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvBill.Location = new System.Drawing.Point(4, 4);
-            this.dtgvBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgvBill.Margin = new System.Windows.Forms.Padding(4);
             this.dtgvBill.Name = "dtgvBill";
             this.dtgvBill.RowHeadersWidth = 51;
             this.dtgvBill.Size = new System.Drawing.Size(1000, 372);
@@ -678,8 +737,9 @@ namespace Coffee_Project
             this.tcAdmin.Controls.Add(this.tpBill);
             this.tcAdmin.Controls.Add(this.tabPage2);
             this.tcAdmin.Controls.Add(this.tpAccount);
+            this.tcAdmin.Controls.Add(this.tabPage3);
             this.tcAdmin.Location = new System.Drawing.Point(16, 15);
-            this.tcAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tcAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.tcAdmin.Name = "tcAdmin";
             this.tcAdmin.SelectedIndex = 0;
             this.tcAdmin.Size = new System.Drawing.Size(1035, 524);
@@ -796,60 +856,35 @@ namespace Coffee_Project
             this.cbTableStatus.Size = new System.Drawing.Size(257, 25);
             this.cbTableStatus.TabIndex = 1;
             // 
-            // btnFirstBillPage
+            // tabPage3
             // 
-            this.btnFirstBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFirstBillPage.Location = new System.Drawing.Point(12, 451);
-            this.btnFirstBillPage.Name = "btnFirstBillPage";
-            this.btnFirstBillPage.Size = new System.Drawing.Size(84, 37);
-            this.btnFirstBillPage.TabIndex = 2;
-            this.btnFirstBillPage.Text = "Đầu";
-            this.btnFirstBillPage.UseVisualStyleBackColor = true;
-            this.btnFirstBillPage.Click += new System.EventHandler(this.btnFirstBillPage_Click);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.richTextBox1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1027, 495);
+            this.tabPage3.TabIndex = 6;
+            this.tabPage3.Text = "Báo cáo";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // btnLastBillPage
+            // richTextBox1
             // 
-            this.btnLastBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLastBillPage.Location = new System.Drawing.Point(936, 451);
-            this.btnLastBillPage.Name = "btnLastBillPage";
-            this.btnLastBillPage.Size = new System.Drawing.Size(84, 37);
-            this.btnLastBillPage.TabIndex = 3;
-            this.btnLastBillPage.Text = "Cuối";
-            this.btnLastBillPage.UseVisualStyleBackColor = true;
-            this.btnLastBillPage.Click += new System.EventHandler(this.btnLastBillPage_Click);
+            this.richTextBox1.Location = new System.Drawing.Point(6, 6);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(428, 174);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
             // 
-            // btnPrevioursBillPage
+            // button1
             // 
-            this.btnPrevioursBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrevioursBillPage.Location = new System.Drawing.Point(317, 451);
-            this.btnPrevioursBillPage.Name = "btnPrevioursBillPage";
-            this.btnPrevioursBillPage.Size = new System.Drawing.Size(84, 37);
-            this.btnPrevioursBillPage.TabIndex = 4;
-            this.btnPrevioursBillPage.Text = "Trước";
-            this.btnPrevioursBillPage.UseVisualStyleBackColor = true;
-            this.btnPrevioursBillPage.Click += new System.EventHandler(this.btnPrevioursBillPage_Click);
-            // 
-            // btnNextBillPage
-            // 
-            this.btnNextBillPage.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextBillPage.Location = new System.Drawing.Point(642, 451);
-            this.btnNextBillPage.Name = "btnNextBillPage";
-            this.btnNextBillPage.Size = new System.Drawing.Size(84, 37);
-            this.btnNextBillPage.TabIndex = 5;
-            this.btnNextBillPage.Text = "Sau";
-            this.btnNextBillPage.UseVisualStyleBackColor = true;
-            this.btnNextBillPage.Click += new System.EventHandler(this.btnNextBillPage_Click);
-            // 
-            // txbPageBill
-            // 
-            this.txbPageBill.Location = new System.Drawing.Point(479, 459);
-            this.txbPageBill.Name = "txbPageBill";
-            this.txbPageBill.ReadOnly = true;
-            this.txbPageBill.Size = new System.Drawing.Size(84, 22);
-            this.txbPageBill.TabIndex = 6;
-            this.txbPageBill.Text = "1";
-            this.txbPageBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txbPageBill.TextChanged += new System.EventHandler(this.txbPageBill_TextChanged);
+            this.button1.Location = new System.Drawing.Point(440, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 48);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Gửi báo cáo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Admin
             // 
@@ -857,7 +892,7 @@ namespace Coffee_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.tcAdmin);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
@@ -895,6 +930,7 @@ namespace Coffee_Project
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvBill)).EndInit();
             this.tcAdmin.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -970,5 +1006,8 @@ namespace Coffee_Project
         private System.Windows.Forms.Button btnNextBillPage;
         private System.Windows.Forms.Button btnPrevioursBillPage;
         private System.Windows.Forms.TextBox txbPageBill;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
